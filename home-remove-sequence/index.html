@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f3dada">
+  <meta name="description" content="SHUSHU/TONG × SHINING NIKKI — take three photos with virtual fashion characters.">
+  <title>SHUSHU/TONG × SHINING NIKKI — Photo Booth</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <section id="homeScreen" class="screen home-screen" aria-label="Welcome to SHUSHU/TONG × SHINING NIKKI photo booth">
+      <div class="home-kiosk">
+        <div class="kiosk-topline" aria-hidden="true">
+          <span>THE VIRTUAL PHOTO STUDIO</span>
+          <span><span class="availability-dot"></span> OPEN FOR PHOTOS</span>
+        </div>
+
+        <header class="home-header">
+          <div class="home-header-side"><span class="mini-star">✳</span> A FASHION PLAYGROUND</div>
+          <img class="home-logo" src="assets/home-logo.png" alt="SHUSHU/TONG × SHINING NIKKI" draggable="false">
+          <div class="home-header-side home-header-right">A MOMENT WITH YOUR VIRTUAL MUSE <span class="mini-star">✳</span></div>
+        </header>
+
+        <div class="home-screen-bezel">
+          <div class="home-photo-screen">
+            <img class="home-hero-photo" src="assets/home-photo.jpg" alt="The three original SHUSHU/TONG × SHINING NIKKI virtual characters together" draggable="false">
+            <div class="hero-topline" aria-hidden="true">
+              <span><span class="hero-sparkle">✦</span> EXCLUSIVE PHOTO BOOTH</span>
+              <span>01 / 03 <span class="hero-sparkle">✦</span></span>
+            </div>
+            <div class="hero-overlay">
+              <p class="hero-overlay-kicker">READY TO MAKE A MEMORY?</p>
+              <button id="homeStart" class="home-start" type="button" aria-label="START: take three photos with virtual characters">
+                <span>START</span>
+                <span class="start-arrow" aria-hidden="true">↗</span>
+              </button>
+              <p class="hero-overlay-subtitle">3 frames &nbsp;·&nbsp; 3 virtual muses &nbsp;·&nbsp; 1 keepsake</p>
+            </div>
+          </div>
+          <div class="screen-lower-bar" aria-hidden="true">
+            <span><span class="screen-lower-dot"></span> VIRTUAL PHOTO BOOTH</span>
+            <span>NO. 001 — SHUSHU/TONG × SHINING NIKKI</span>
+            <span class="lower-heart">♡</span>
+          </div>
+        </div>
+
+        <div class="kiosk-bottom">
+          <div class="kiosk-bottom-left"><span class="step-index">01</span><span>CHOOSE YOUR POSE<br><small>Be the fourth girl in the frame</small></span></div>
+          <div class="kiosk-bottom-center kiosk-bottom-center-minimal" aria-hidden="true"><span class="center-line"></span><span class="center-dot">✦</span><span class="center-line"></span></div>
+          <div class="kiosk-bottom-right">PHOTO BOOTH EXPERIENCE <span>✳</span></div>
+        </div>
+        <footer class="home-footnote">STEP INTO THE WORLD OF SHUSHU/TONG <span>✦</span> MADE TO POSE WITH YOU</footer>
+      </div>
+    </section>
+
+    <section id="shootScreen" class="screen shoot-screen hidden" aria-label="Take photos">
+      <header class="topbar">
+        <button id="goHome" class="text-button" type="button">‹ BACK</button>
+        <div class="small-brand"><b>SHUSHU/TONG</b><span> × </span><em>SHINING NIKKI</em></div>
+        <span id="shotCounter" class="progress-label">01 / 03</span>
+      </header>
+      <div class="shoot-layout">
+        <div class="shoot-main">
+          <div class="step-label">PHOTOISM-STYLE LIVE BOOTH <span>✦</span> 3 CUTS</div>
+          <h1>Step into the frame.</h1>
+          <p id="instruction" class="instruction">Your whole camera view appears behind your virtual character. Stand next to them and pose!</p>
+          <div class="stage-wrap">
+            <canvas id="stage" width="900" height="900" role="img" aria-label="Full live camera with virtual character overlay"></canvas>
+            <div id="livePill" class="live-pill"><span class="live-dot"></span> LIVE CAMERA</div>
+            <div class="viewfinder-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div id="countdown" class="countdown hidden" aria-live="assertive">3</div>
+            <div id="flash" class="flash" aria-hidden="true"></div>
+            <div id="stageBadge" class="stage-badge">01 — PINK</div>
+          </div>
+          <div class="studio-controls" aria-label="Adjust your live photo composition">
+            <div class="controls-heading"><span>MAKE IT YOUR FRAME</span><span>Drag the virtual character to move her ↔</span></div>
+            <div class="control-items">
+              <label class="range-control" for="characterSize"><span>CHARACTER SIZE</span><input id="characterSize" type="range" min="65" max="145" value="100" step="5"><output id="characterSizeValue">100%</output></label>
+              <label class="range-control" for="characterMove"><span>LEFT / RIGHT</span><input id="characterMove" type="range" min="-310" max="310" value="0" step="10"><output id="characterMoveValue">CENTER</output></label>
+              <button id="resetFrame" type="button" class="reset-control">RESET FRAME</button>
+            </div>
+          </div>
+          <div class="shoot-actions">
+            <button id="captureBtn" class="primary" type="button">START SHOOTING</button>
+            <button id="cameraBtn" class="secondary" type="button">TRY CAMERA AGAIN</button>
+            <label for="uploadPhoto" class="secondary upload">OR UPLOAD A SELFIE</label>
+            <input id="uploadPhoto" type="file" accept="image/*" hidden>
+          </div>
+          <div id="status" class="status" role="status">Camera photos stay on your device.</div>
+          <div class="tips">Like Photoism: your whole camera view is the background. Step back to show more of your body, and use the sliders to position the virtual character. The camera preview is the final photo composition.</div>
+        </div>
+        <aside class="shot-panel">
+          <div class="side-heading">YOUR THREE MOMENTS</div>
+          <div class="shot-thumbs">
+            <div class="shot-thumb"><img id="thumb0" src="assets/scene-pink.jpg" alt="Pink virtual character"><span>01 · PINK</span></div>
+            <div class="shot-thumb"><img id="thumb1" src="assets/scene-silver.jpg" alt="Silver virtual character"><span>02 · SILVER</span></div>
+            <div class="shot-thumb"><img id="thumb2" src="assets/scene-blue.jpg" alt="Blue virtual character"><span>03 · BLUE</span></div>
+          </div>
+          <div class="side-footer">Full camera view · 3-second countdown · 1 keepsake</div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen result-screen hidden" aria-label="Your photo strip">
+      <header class="topbar result-topbar">
+        <button id="resultHome" class="text-button" type="button">‹ HOME</button>
+        <div class="small-brand"><b>SHUSHU/TONG</b><span> × </span><em>SHINING NIKKI</em></div>
+        <span class="progress-label">03 / 03</span>
+      </header>
+      <div class="result-layout">
+        <div class="result-copy">
+          <div class="step-label">YOUR PHOTO BOOTH MEMORY ♡</div>
+          <h1>Picture perfect.</h1>
+          <p>Three moments with your virtual characters, inside your original pink photo strip.</p>
+          <button id="downloadBtn" class="primary download-btn" type="button">↓ DOWNLOAD MY PHOTO STRIP</button>
+          <button id="retakeBtn" class="secondary" type="button">↺ RETAKE THREE PHOTOS</button>
+          <p class="privacy-note">Saved as a PNG on your device. No account or paid API required.</p>
+        </div>
+        <div class="result-print"><canvas id="strip" width="635" height="2000" aria-label="Three-photo souvenir strip"></canvas></div>
+      </div>
+    </section>
+  </main>
+  <video id="cameraVideo" autoplay playsinline muted hidden></video>
+  <script>/* The original art is used as supplied; the images are never AI-regenerated. */</script>
+</body>
+</html>

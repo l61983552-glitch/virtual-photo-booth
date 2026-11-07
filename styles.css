@@ -113,3 +113,12 @@
  .home-footnote{padding-top:18px;font-size:8px;letter-spacing:.13em}
 }
 @media(prefers-reduced-motion:reduce){.home-start{transition:none}}
+
+/* small homepage cleanup: remove visible 01 PINK / 02 SILVER / 03 BLUE while keeping the bottom band */
+.kiosk-bottom-center-minimal{gap:12px;color:#d2b2bc;min-height:20px}
+.kiosk-bottom-center-minimal .center-line{display:block;width:52px;height:1px;background:#e3cfd5}
+.kiosk-bottom-center-minimal .center-dot{font-size:13px;line-height:1;color:#d5adb8}
+@media(max-width:430px){
+ .kiosk-bottom-center-minimal .center-line{width:34px}
+ .kiosk-bottom-center-minimal .center-dot{font-size:11px}
+}
