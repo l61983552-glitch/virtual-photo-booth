@@ -122,3 +122,12 @@
  .kiosk-bottom-center-minimal .center-line{width:34px}
  .kiosk-bottom-center-minimal .center-dot{font-size:11px}
 }
+
+/* Blank lower homepage strips. Keep original framing and vertical spacing, no text or icons. */
+.screen-lower-bar{min-height:39px}
+.kiosk-bottom{min-height:76px}
+@media(max-width:800px){.kiosk-bottom{min-height:61px}}
+@media(max-width:430px){.screen-lower-bar{min-height:30px}}
+/* Three right-hand thumbnail images only, with no headers or captions. */
+.shot-panel{padding-top:24px;padding-bottom:24px}
+@media(max-width:850px){.shot-panel{padding-top:16px;padding-bottom:16px}}
