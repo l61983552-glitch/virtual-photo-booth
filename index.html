@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f3dada">
+  <meta name="description" content="SHUSHU/TONG × SHINING NIKKI — take three photos with virtual fashion characters.">
+  <title>SHUSHU/TONG × SHINING NIKKI — Photo Booth</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <section id="homeScreen" class="screen home-screen" aria-label="Welcome">
+      <div class="home-art">
+        <img src="assets/home.jpg" alt="SHUSHU/TONG × SHINING NIKKI virtual character photo booth homepage" draggable="false">
+        <button id="homeStart" class="home-start" aria-label="START: take photos with virtual characters" title="START"></button>
+      </div>
+    </section>
+
+    <section id="shootScreen" class="screen shoot-screen hidden" aria-label="Take photos">
+      <header class="topbar">
+        <button id="goHome" class="text-button" type="button">‹ BACK</button>
+        <div class="small-brand"><b>SHUSHU/TONG</b><span> × </span><em>SHINING NIKKI</em></div>
+        <span id="shotCounter" class="progress-label">01 / 03</span>
+      </header>
+      <div class="shoot-layout">
+        <div class="shoot-main">
+          <div class="step-label">VIRTUAL CHARACTER PHOTO BOOTH <span>✦</span> 3 CUTS</div>
+          <h1>Let's take a picture!</h1>
+          <p id="instruction" class="instruction">Allow camera access, then pose beside your virtual character.</p>
+          <div class="stage-wrap">
+            <canvas id="stage" width="900" height="900" role="img" aria-label="Live composite of your camera and virtual character"></canvas>
+            <div id="countdown" class="countdown hidden" aria-live="assertive">3</div>
+            <div id="flash" class="flash" aria-hidden="true"></div>
+            <div id="stageBadge" class="stage-badge">01 — PINK</div>
+          </div>
+          <div class="shoot-actions">
+            <button id="captureBtn" class="primary" type="button">START SHOOTING</button>
+            <button id="cameraBtn" class="secondary" type="button">TRY CAMERA AGAIN</button>
+            <label for="uploadPhoto" class="secondary upload">OR UPLOAD A SELFIE</label>
+            <input id="uploadPhoto" type="file" accept="image/*" hidden>
+          </div>
+          <div id="status" class="status" role="status">Camera photos stay on your device.</div>
+          <div class="tips">The character and backdrop are your original designs. Camera cutout is optional; if unavailable, the photo is blended beside the character.</div>
+        </div>
+        <aside class="shot-panel">
+          <div class="side-heading">YOUR THREE MOMENTS</div>
+          <div class="shot-thumbs">
+            <div class="shot-thumb"><img id="thumb0" src="assets/scene-pink.jpg" alt="Pink virtual character"><span>01 · PINK</span></div>
+            <div class="shot-thumb"><img id="thumb1" src="assets/scene-blue.jpg" alt="Blue virtual character"><span>02 · BLUE</span></div>
+            <div class="shot-thumb"><img id="thumb2" src="assets/scene-silver.jpg" alt="Silver virtual character"><span>03 · SILVER</span></div>
+          </div>
+          <div class="side-footer">3 poses · 3-second countdown · 1 keepsake</div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen result-screen hidden" aria-label="Your photo strip">
+      <header class="topbar result-topbar">
+        <button id="resultHome" class="text-button" type="button">‹ HOME</button>
+        <div class="small-brand"><b>SHUSHU/TONG</b><span> × </span><em>SHINING NIKKI</em></div>
+        <span class="progress-label">03 / 03</span>
+      </header>
+      <div class="result-layout">
+        <div class="result-copy">
+          <div class="step-label">YOUR PHOTO BOOTH MEMORY ♡</div>
+          <h1>Picture perfect.</h1>
+          <p>Three moments with your virtual characters, inside your original pink photo strip.</p>
+          <button id="downloadBtn" class="primary download-btn" type="button">↓ DOWNLOAD MY PHOTO STRIP</button>
+          <button id="retakeBtn" class="secondary" type="button">↺ RETAKE THREE PHOTOS</button>
+          <p class="privacy-note">Saved as a PNG on your device. No account or paid API required.</p>
+        </div>
+        <div class="result-print"><canvas id="strip" width="635" height="2000" aria-label="Three-photo souvenir strip"></canvas></div>
+      </div>
+    </section>
+  </main>
+  <video id="cameraVideo" autoplay playsinline muted hidden></video>
+  <script>/* The original art is used as supplied; the images are never AI-regenerated. */</script>
+</body>
+</html>
