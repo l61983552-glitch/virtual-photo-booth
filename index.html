@@ -11,10 +11,48 @@
 </head>
 <body>
   <main>
-    <section id="homeScreen" class="screen home-screen" aria-label="Welcome">
-      <div class="home-art">
-        <img src="assets/home.jpg" alt="SHUSHU/TONG × SHINING NIKKI virtual character photo booth homepage" draggable="false">
-        <button id="homeStart" class="home-start" aria-label="START: take photos with virtual characters" title="START"></button>
+    <section id="homeScreen" class="screen home-screen" aria-label="Welcome to SHUSHU/TONG × SHINING NIKKI photo booth">
+      <div class="home-kiosk">
+        <div class="kiosk-topline" aria-hidden="true">
+          <span>THE VIRTUAL PHOTO STUDIO</span>
+          <span><span class="availability-dot"></span> OPEN FOR PHOTOS</span>
+        </div>
+
+        <header class="home-header">
+          <div class="home-header-side"><span class="mini-star">✳</span> A FASHION PLAYGROUND</div>
+          <img class="home-logo" src="assets/home-logo.png" alt="SHUSHU/TONG × SHINING NIKKI" draggable="false">
+          <div class="home-header-side home-header-right">A MOMENT WITH YOUR VIRTUAL MUSE <span class="mini-star">✳</span></div>
+        </header>
+
+        <div class="home-screen-bezel">
+          <div class="home-photo-screen">
+            <img class="home-hero-photo" src="assets/home-photo.jpg" alt="The three original SHUSHU/TONG × SHINING NIKKI virtual characters together" draggable="false">
+            <div class="hero-topline" aria-hidden="true">
+              <span><span class="hero-sparkle">✦</span> EXCLUSIVE PHOTO BOOTH</span>
+              <span>01 / 03 <span class="hero-sparkle">✦</span></span>
+            </div>
+            <div class="hero-overlay">
+              <p class="hero-overlay-kicker">READY TO MAKE A MEMORY?</p>
+              <button id="homeStart" class="home-start" type="button" aria-label="START: take three photos with virtual characters">
+                <span>START</span>
+                <span class="start-arrow" aria-hidden="true">↗</span>
+              </button>
+              <p class="hero-overlay-subtitle">3 frames &nbsp;·&nbsp; 3 virtual muses &nbsp;·&nbsp; 1 keepsake</p>
+            </div>
+          </div>
+          <div class="screen-lower-bar" aria-hidden="true">
+            <span><span class="screen-lower-dot"></span> VIRTUAL PHOTO BOOTH</span>
+            <span>NO. 001 — SHUSHU/TONG × SHINING NIKKI</span>
+            <span class="lower-heart">♡</span>
+          </div>
+        </div>
+
+        <div class="kiosk-bottom">
+          <div class="kiosk-bottom-left"><span class="step-index">01</span><span>CHOOSE YOUR POSE<br><small>Be the fourth girl in the frame</small></span></div>
+          <div class="kiosk-bottom-center" aria-label="Photo shoot sequence"><span><b>01</b> PINK</span><i></i><span><b>02</b> SILVER</span><i></i><span><b>03</b> BLUE</span></div>
+          <div class="kiosk-bottom-right">PHOTO BOOTH EXPERIENCE <span>✳</span></div>
+        </div>
+        <footer class="home-footnote">STEP INTO THE WORLD OF SHUSHU/TONG <span>✦</span> MADE TO POSE WITH YOU</footer>
       </div>
     </section>
 
@@ -58,8 +96,8 @@
           <div class="side-heading">YOUR THREE MOMENTS</div>
           <div class="shot-thumbs">
             <div class="shot-thumb"><img id="thumb0" src="assets/scene-pink.jpg" alt="Pink virtual character"><span>01 · PINK</span></div>
-            <div class="shot-thumb"><img id="thumb1" src="assets/scene-blue.jpg" alt="Blue virtual character"><span>02 · BLUE</span></div>
-            <div class="shot-thumb"><img id="thumb2" src="assets/scene-silver.jpg" alt="Silver virtual character"><span>03 · SILVER</span></div>
+            <div class="shot-thumb"><img id="thumb1" src="assets/scene-silver.jpg" alt="Silver virtual character"><span>02 · SILVER</span></div>
+            <div class="shot-thumb"><img id="thumb2" src="assets/scene-blue.jpg" alt="Blue virtual character"><span>03 · BLUE</span></div>
           </div>
           <div class="side-footer">Full camera view · 3-second countdown · 1 keepsake</div>
         </aside>
