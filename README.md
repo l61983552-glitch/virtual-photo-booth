@@ -1,39 +1,37 @@
-# SHUSHU/TONG × SHINING NIKKI – Three-Cut Photo Booth
+# SHUSHU/TONG × SHINING NIKKI — LIVE Photo Booth
 
-A single-page website made from **your exact uploaded designs**. No AI regeneration, no backend, no API key, and no build process.
+## Latest update: FULL LIVE CAMERA preview (Photoism-style)
 
-## Flow
+The camera image now fills the **entire square photo**. The three virtual characters are separate PNGs with transparent backgrounds, composited **over** the live camera view. You can adjust virtual character size and left/right position. This is a visual composite, not a real-time 3D AR tracking system.
 
-1. Homepage uses your `download(5).jpg` art as-is. Tap the existing pink **START** button.
-2. Take **three photos**, each with a different character/background: pink, blue, then silver. Each shot uses a **3-second countdown**.
-3. View and **download a PNG three-cut strip**, composited into your original frame (`download(7).jpg`). The original frame places the characters **pink / silver / blue** from top to bottom.
+Photos: **Pink → Blue → Silver**, with a 3-second countdown per photo. The result uses your pink frame's original order: **Pink → Silver → Blue**. Download the resulting strip as a PNG. No API key or backend required.
 
-The site uses the original character photos; it crops the blank white top/bottom margins to create square scenes. It does not change the character's face, outfit, or background. A browser webcam is shown on the empty side of each virtual character scene. Where internet access and browser support allow, MediaPipe's in-browser selfie segmentation removes the webcam background. Otherwise it falls back to a softly blended side view. If camera access is denied, **OR UPLOAD A SELFIE** supports testing with a local photo.
+## How to update your existing GitHub Pages website
 
-**Important:** The automatic background cutout downloads MediaPipe JavaScript/model assets from jsDelivr when online. No personal photo is uploaded to our server. Browser processing and photo export are local. The split/blend fallback works without MediaPipe. Results are not automatically stored between sessions.
+1. Unzip the updated project ZIP locally.
+2. Open your existing repository `virtual-photo-booth` on GitHub.
+3. Choose **Add file → Upload files** and upload `index.html`, `app.js`, `styles.css`, `README.md`, and the complete `assets` folder contents. **Replace** the same-named files in the existing repository. You can also edit or commit changes using Git on your computer.
+4. Make sure the following are all in the **repository root** (not inside an extra nested folder): `index.html`, `app.js`, `styles.css`, and folder `assets/`.
+5. Commit changes. Since GitHub Pages is already configured, it will publish updates automatically after the new commit finishes deploying.
+6. Refresh the GitHub Pages website with **Ctrl + Shift + R** (or use a private/incognito window) to bypass cached old files.
 
-## Upload to GitHub Pages (no coding needed)
+Expected website address based on your repo:
+https://l61983552-glitch.github.io/virtual-photo-booth/
 
-1. Sign in to GitHub and open https://github.com/new.
-2. Create a **public** repository, e.g. `shushu-nikki-photobooth`.
-3. Upload **`index.html`, `app.js`, `styles.css`, and the entire `assets` folder** into the root of the repository (keep asset folder paths unchanged). Commit changes.
-4. Go to **Settings → Pages**; set **Source: Deploy from a branch**, **Branch: main**, **Folder: /(root)**; click **Save**.
-5. Open `https://YOUR-GITHUB-USERNAME.github.io/shushu-nikki-photobooth/` after Pages deployment completes.
-6. Open via **HTTPS**. Camera permissions normally require HTTPS (or `localhost`) and may not work from an opened local `file:///...` path.
+## Files
+- `index.html` Main Page / Shooting Page / Final Photo Strip
+- `styles.css` Responsive styling and adjustable photo booth controls
+- `app.js` In-browser camera, composition, auto 3-shot sequence, saving PNG
+- `assets/home.jpg` Your original homepage artwork
+- `assets/scene-{pink,blue,silver}.jpg` Your original virtual character scenes, preserved unchanged
+- `assets/character-{pink,blue,silver}.png` Derived cutouts of your supplied virtual character designs for full-camera overlay
+- `assets/frame.jpg` Your original pink 3-cut frame, preserved unchanged
 
-## Testing locally
+## Camera notes
 
-Run `python -m http.server 8000` inside this folder, and open http://localhost:8000. On desktop use a camera or select **OR UPLOAD A SELFIE**. On mobile open the published GitHub Pages HTTPS link.
-
-## Project files
-
-- `index.html` — homepage and photo booth/result screens
-- `styles.css` — layout for phone/desktop
-- `app.js` — camera, optional background segmentation, 3-photo countdown, PNG exporter
-- `assets/home.jpg` — original homepage
-- `assets/scene-pink.jpg`, `assets/scene-blue.jpg`, `assets/scene-silver.jpg` — cropped from three uploaded references
-- `assets/frame.jpg` — the original narrow pink three-cut photo strip (preserves the bow/pearls/logos)
-
-## Notes
-
-This is a fan / student campaign prototype. To publish branded assets publicly, verify any applicable permissions for SHUSHU/TONG and SHINING NIKKI names and artwork. It is not an official website operated by either brand.
+- Webcam permission requires HTTPS (provided automatically by GitHub Pages) or localhost.
+- Stand further from the camera to fit more of your body into view. The website cannot enlarge the physical camera's field of view.
+- If camera access fails, use **OR UPLOAD A SELFIE**. No images are uploaded to a server; they stay in the browser.
+- Camera images are mirrored for a mirror-like live preview; uploaded selfies are left as supplied.
+- This works with static character photographs. It does not make the virtual character move or change pose during capture.
+- The PNG cutout edges are approximate because the originals have blue skies and green hills behind the characters. For perfect hair strands, replace the three `character-*.png` files with manually masked transparent exports using the same names.

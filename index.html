@@ -26,14 +26,24 @@
       </header>
       <div class="shoot-layout">
         <div class="shoot-main">
-          <div class="step-label">VIRTUAL CHARACTER PHOTO BOOTH <span>✦</span> 3 CUTS</div>
-          <h1>Let's take a picture!</h1>
-          <p id="instruction" class="instruction">Allow camera access, then pose beside your virtual character.</p>
+          <div class="step-label">PHOTOISM-STYLE LIVE BOOTH <span>✦</span> 3 CUTS</div>
+          <h1>Step into the frame.</h1>
+          <p id="instruction" class="instruction">Your whole camera view appears behind your virtual character. Stand next to them and pose!</p>
           <div class="stage-wrap">
-            <canvas id="stage" width="900" height="900" role="img" aria-label="Live composite of your camera and virtual character"></canvas>
+            <canvas id="stage" width="900" height="900" role="img" aria-label="Full live camera with virtual character overlay"></canvas>
+            <div id="livePill" class="live-pill"><span class="live-dot"></span> LIVE CAMERA</div>
+            <div class="viewfinder-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
             <div id="countdown" class="countdown hidden" aria-live="assertive">3</div>
             <div id="flash" class="flash" aria-hidden="true"></div>
             <div id="stageBadge" class="stage-badge">01 — PINK</div>
+          </div>
+          <div class="studio-controls" aria-label="Adjust your live photo composition">
+            <div class="controls-heading"><span>MAKE IT YOUR FRAME</span><span>Drag the virtual character to move her ↔</span></div>
+            <div class="control-items">
+              <label class="range-control" for="characterSize"><span>CHARACTER SIZE</span><input id="characterSize" type="range" min="65" max="145" value="100" step="5"><output id="characterSizeValue">100%</output></label>
+              <label class="range-control" for="characterMove"><span>LEFT / RIGHT</span><input id="characterMove" type="range" min="-310" max="310" value="0" step="10"><output id="characterMoveValue">CENTER</output></label>
+              <button id="resetFrame" type="button" class="reset-control">RESET FRAME</button>
+            </div>
           </div>
           <div class="shoot-actions">
             <button id="captureBtn" class="primary" type="button">START SHOOTING</button>
@@ -42,7 +52,7 @@
             <input id="uploadPhoto" type="file" accept="image/*" hidden>
           </div>
           <div id="status" class="status" role="status">Camera photos stay on your device.</div>
-          <div class="tips">The character and backdrop are your original designs. Camera cutout is optional; if unavailable, the photo is blended beside the character.</div>
+          <div class="tips">Like Photoism: your whole camera view is the background. Step back to show more of your body, and use the sliders to position the virtual character. The camera preview is the final photo composition.</div>
         </div>
         <aside class="shot-panel">
           <div class="side-heading">YOUR THREE MOMENTS</div>
@@ -51,7 +61,7 @@
             <div class="shot-thumb"><img id="thumb1" src="assets/scene-blue.jpg" alt="Blue virtual character"><span>02 · BLUE</span></div>
             <div class="shot-thumb"><img id="thumb2" src="assets/scene-silver.jpg" alt="Silver virtual character"><span>03 · SILVER</span></div>
           </div>
-          <div class="side-footer">3 poses · 3-second countdown · 1 keepsake</div>
+          <div class="side-footer">Full camera view · 3-second countdown · 1 keepsake</div>
         </aside>
       </div>
     </section>
