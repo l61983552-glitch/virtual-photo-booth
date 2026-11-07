@@ -5,9 +5,9 @@
 // The live CAMERA fills the entire frame. A transparent virtual character is
 // composited OVER the camera, not a small selfie pasted onto a scene.
 const $ = id => document.getElementById(id);
-const sceneFiles = ['assets/scene-pink.jpg','assets/scene-blue.jpg','assets/scene-silver.jpg'];
-const characterFiles = ['assets/character-pink.png','assets/character-blue.png','assets/character-silver.png'];
-const sceneNames = ['PINK','BLUE','SILVER'];
+const sceneFiles = ['assets/scene-pink.jpg','assets/scene-silver.jpg','assets/scene-blue.jpg'];
+const characterFiles = ['assets/character-pink.png','assets/character-silver.png','assets/character-blue.png'];
+const sceneNames = ['PINK','SILVER','BLUE'];
 const stage = $('stage'), ctx = stage.getContext('2d',{alpha:false});
 const strip = $('strip'), stripCtx = strip.getContext('2d');
 const video = $('cameraVideo');
@@ -37,8 +37,8 @@ function setCurrent(i){
   $('stageBadge').textContent=String(i+1).padStart(2,'0')+' — '+sceneNames[i];
   $('instruction').textContent=[
     '01 · Pink. Step into the full camera view and pose together!',
-    '02 · Blue. Move a little closer or farther away for your next pose.',
-    '03 · Silver. One last picture with your virtual character!'
+    '02 · Silver. Move a little closer or farther away for your next pose.',
+    '03 · Blue. One last picture with your virtual character!'
   ][i];
 }
 function source(){return uploaded||((playing&&video.readyState>=2)?video:null);}
@@ -168,8 +168,8 @@ async function buildStrip(){
   stripCtx.clearRect(0,0,635,2000);
   stripCtx.drawImage(frame,0,0,635,2000);
   // The frame artwork has original positions: pink / silver / blue.
-  // Camera shoots in the requested order: pink / blue / silver.
-  for(const {i,y} of [{i:0,y:225},{i:2,y:787},{i:1,y:1348}]){
+  // Camera now shoots pink / silver / blue, matching the unchanged print layout.
+  for(const {i,y} of [{i:0,y:225},{i:1,y:787},{i:2,y:1348}]){
     const im=await new Promise((resolve,reject)=>{
       const pic=new Image();pic.onload=()=>resolve(pic);pic.onerror=reject;pic.src=shots[i];
     });
@@ -183,7 +183,13 @@ function downloadStrip(){
 async function enterShoot(){
   if(shooting)return;
   shots.fill(null);
-  for(let i=0;i<3;i++)$('thumb'+i).src=sceneFiles[i];
+  for(let i=0;i<3;i++){
+    const thumb=$('thumb'+i);
+    thumb.src=sceneFiles[i];
+    thumb.alt=sceneNames[i]+' virtual character';
+    const caption=thumb.nextElementSibling;
+    if(caption)caption.textContent=String(i+1).padStart(2,'0')+' · '+sceneNames[i];
+  }
   resetFrame();setCurrent(0);show('shoot');updateButtons();
   await startCamera();
 }
